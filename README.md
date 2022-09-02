@@ -1,5 +1,5 @@
 # PolarFly Artifact 
-[![DOI](https://zenodo.org/badge/322350492.svg)](https://zenodo.org/badge/latestdoi/322350492)
+[![DOI](https://zenodo.org/badge/528958685.svg)](https://zenodo.org/badge/latestdoi/528958685)
 
 PolarFly is a diameter-2 network topology based on the Erdos-Renyi family of polarity
 graphs. <br />
