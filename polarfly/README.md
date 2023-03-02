@@ -1,4 +1,4 @@
-# PolarFly 
+# PolarFly and PolarStar 
 |![PolarFly Topology with 553 routers of radix 24 each (q=23).](polarfly.png)|
 |:--:|
 |**PolarFly Topology with 553 routers of radix 24 each (q=23). Black edges highlight a rack of PolarFly**.|
@@ -25,15 +25,20 @@ It has a modular and extensible design which allows incremental
 network growth without rewiring.
 
 
+|![Moore bound comparison of different diameter-2 topologies](moore_bound_comparison.JPG)|
+|:--:|
+|**Moore Bound Comparison of PolarFly and other diameter-2 topologies**|
+
+
 ### Polarstar
 Polarstar is a diameter-3 network topology based on star product of Erdos-Renyi graphs with
 Paley or Inductive Quad graphs. <br />
 PolarStar achieves the highest scale among all known diameter-3 graphs for several radixes.
 
 
-|![Moore bound comparison of different diameter-2 topologies](moore_bound_comparison.JPG)|
+|![Moore bound comparison of different diameter-3 topologies](polarstar_moore_bound.png)|
 |:--:|
-|**Moore Bound Comparison of PolarFly and other diameter-2 topologies**|
+|**Moore Bound Comparison of Polarstar and other diameter-3 topologies**|
 
 
 ## Directory Structure
