@@ -31,16 +31,26 @@ parser_pf.add_argument("-q", dest='q', type=int, required=True, help="prime powe
 parser_pf.add_argument("-r0", dest='r0', default=0, type=int, help="quadric cluster replication")
 parser_pf.add_argument("-r1", dest='r1', default=0, type=int, help="non-quadric cluster replication")
 parser_pf.add_argument('-rf', dest='rf', type=str, choices=['min', 'ugalgnew', 'ugallnew', 'ugall4_pf'], default="min", help='routing function')
-parser_pf.add_argument('-t', dest='traffic', type=str, choices=['uniform', 'randperm', 'goodpf', 'badpf', 'tornado'], default="uniform", help='traffic pattern')
+parser_pf.add_argument('-t', dest='traffic', type=str, choices=['uniform', 'randperm', 'goodpf', 'badpf', 'tornado', 'bitcomp'], default="uniform", help='traffic pattern')
 topology_parsers.append(parser_pf)
 
-#Slimfly
-parser_sf   = subparser.add_parser("slimfly", help="simulates slimfly")
-parser_sf.add_argument("-q", dest='q', type=int, required=True, help="prime power")
-parser_sf.add_argument('-rf', dest='rf', type=str, choices=['min', 'ugalgnew', 'ugallnew'], default="min", help='routing function')
-parser_sf.add_argument('-t', dest='traffic', type=str, choices=['uniform', 'randperm', 'tornado'], default="uniform", help='traffic pattern')
-topology_parsers.append(parser_sf)
 
+#Polarstar
+parser_ps   = subparser.add_parser("polarstar", help="simulates polarstar")
+parser_ps.add_argument("-d", dest='d', type=int, help="network radix")
+parser_ps.add_argument("-sg", dest='sg', type=str, choices=['iq', 'paley', 'max'], default='max', help='supernode topology')
+parser_ps.add_argument('-rf', dest='rf', type=str, choices=['min', 'val', 'ugallnew'], default='min', help='Routing functions')
+parser_ps.add_argument('-t', dest='traffic', type=str, choices=['uniform', 'randperm', 'tornado', 'bitcomp'], default='uniform', help='traffic patterns')
+topology_parsers.append(parser_ps)
+
+
+##Slimfly
+#parser_sf   = subparser.add_parser("slimfly", help="simulates slimfly")
+#parser_sf.add_argument("-q", dest='q', type=int, required=True, help="prime power")
+#parser_sf.add_argument('-rf', dest='rf', type=str, choices=['min', 'ugalgnew', 'ugallnew'], default="min", help='routing function')
+#parser_sf.add_argument('-t', dest='traffic', type=str, choices=['uniform', 'randperm', 'tornado'], default="uniform", help='traffic pattern')
+#topology_parsers.append(parser_sf)
+#
 #Dragonfly
 parser_df   = subparser.add_parser("dragonfly", help="simulates dragonfly")
 parser_df.add_argument("-n", dest='n', type=int, default=1, help="number of levels in supernode")
@@ -88,7 +98,7 @@ config_file_path= booksim_path + "/sweep_examples/"
 topogen_path    = '../topologies/tool.py generate '
 pf_data_path    = './data/Browns/'
 pf_ext_data_path= './data/BrownExt/'
-sf_data_path    = './data/slimflies/'
+ps_data_path    = './data/PolarStars/'
 bs_ext          = ".bs.anynet"
 
 print("USING CONFIG FILE : " + str(config_file))
@@ -191,10 +201,10 @@ def generate_topology(args):
         os.system(cmd) 
         op_file = translate_to_booksim(op_file, args.k)
 
-    elif (args.topo=="slimfly"):
-        cmd     = cmd + " slimfly " + str(args.q) 
+    elif (args.topo=="polarstar"):
+        cmd     = cmd + " polarstar " + str(args.d) + " " + args.sg 
         os.system(cmd) 
-        op_file = sf_data_path + "SlimFly." + str(args.q) + ".adj.txt"
+        op_file = ps_data_path + "Polarstar." + str(args.d) + "." + args.sg + ".adj.txt"
         op_file = translate_to_booksim(op_file, args.k)
 
     elif (args.topo=="anynet"):
@@ -210,7 +220,7 @@ def generate_topology(args):
 
 def create_cmd(inj_rate_, network_file, config_file, logfile, args):
     inj_rate = inj_rate_ if inj_rate_ > 0 else 0.01
-    cmd = booksim_exec + " " +  config_file + " injection_rate=" + str(inj_rate)
+    cmd = "timeout 7200s " +  booksim_exec + " " +  config_file + " injection_rate=" + str(inj_rate)
     if (network_file!=''):
         cmd = cmd + " network_file=" + network_file
     else:

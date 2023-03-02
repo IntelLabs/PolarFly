@@ -1,5 +1,9 @@
+# Copyright (C) 2020 Intel Corporation
+# SPDX-License-Identifier: MIT License
+
 # Author: Kartik Lakhotia 
-# This script's purpose is to validate extensions of Brown graph 
+# Validate Brown graph extensions 
+
 
 # PARAMETERS
 # q: size of Galois Field (q is a prime power) 

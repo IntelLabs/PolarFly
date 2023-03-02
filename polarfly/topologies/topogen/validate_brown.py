@@ -1,5 +1,9 @@
+# Copyright (C) 2020 Intel Corporation
+# SPDX-License-Identifier: MIT License
+
 # Author: Kartik Lakhotia 
-# This script's purpose is to validate a created Brown graph
+# Validate Brown graph 
+
 
 import networkx as nx
 import random 

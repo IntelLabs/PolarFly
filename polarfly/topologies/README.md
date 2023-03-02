@@ -17,6 +17,7 @@ This tool can generate different topologies, compute path diverity measures on s
 - 2x oversubscribed Fat-Tree
 - Slim Fly
 - Polar Fly (*brown* graphs)
+- Polarstar
 - Incremental extensions of Polarfly (*brown_ext*) 
 
 ## Supported measures

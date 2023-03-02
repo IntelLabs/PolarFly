@@ -1,7 +1,7 @@
 # BookSim
 BookSim is a cycle-accurate interconnection network simulator designed by Jiang et al. <br \>
 We have modified booksim to introduce new traffic patterns and routing functions
-for PolarFly and Slim Fly.
+for PolarFly and Polarstar.
 
 ## Usage
 Refer to `doc/booksim_manual.pdf`
