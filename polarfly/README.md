@@ -4,9 +4,11 @@
 |**PolarFly Topology with 553 routers of radix 24 each (q=23). Black edges highlight a rack of PolarFly**.|
 
 
-Members: Kartik Lakhotia, Macieh Besta, Laura Monroe, Kelly Isham, Patrick Iff, Torsten Hoefler, Fabrizio Petrini
+Members: Kartik Lakhotia, Maciej Besta, Laura Monroe, Kelly Isham, Patrick Iff, Nils Blach, Torsten Hoefler, Fabrizio Petrini
 
 ## Introduction
+
+### PolarFly
 PolarFly is a diameter-2 network topology based on the 
 Erdos-Renyi family of polarity
 graphs. <br />
@@ -21,6 +23,13 @@ including some of particular interest <br />
 from a technological perspective, such as, 24, 32, 48, 62, 128. <br />
 It has a modular and extensible design which allows incremental
 network growth without rewiring.
+
+
+### Polarstar
+Polarstar is a diameter-3 network topology based on star product of Erdos-Renyi graphs with
+Paley or Inductive Quad graphs. <br />
+PolarStar achieves the highest scale among all known diameter-3 graphs for several radixes.
+
 
 |![Moore bound comparison of different diameter-2 topologies](moore_bound_comparison.JPG)|
 |:--:|
@@ -53,5 +62,6 @@ Each directory has READMEs with corresponding instructions.
 
 4. M. Besta and T. Hoefler. "Slim Fly: A cost effective low-diameter network topology." Proceedings of the International Conference for igh performance computing, networking, storage and analysis, 2014.
 
+5. Lakhotia, Kartik, Maciej Besta, Laura Monroe, Kelly Isham, Patrick Iff, Torsten Hoefler, and Fabrizio Petrini. "Polarfly: A cost-effective and flexible low-diameter topology." Proceedings of the International Conference on High Performance Computing, Networking, Storage and Analysis, 2022.
 
-
+6. Lakhotia, Kartik, Laura Monroe, Kelly Isham, Maciej Besta, Nils Blach, Torsten Hoefler, and Fabrizio Petrini. "PolarStar: Expanding the Scalability Horizon of Diameter-3 Networks." arXiv preprint arXiv:2302.07217, 2023.

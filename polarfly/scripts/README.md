@@ -34,6 +34,7 @@ For parallel (multithreaded) sweep, use `-m parallel` option.
 
 ## Supported topologies
 - PolarFly (with and without incremental extensions) 
+- Polarstar
 - Dragonfly (balanced)
 - Fat-Tree (three-stage variant) 
 
@@ -61,6 +62,8 @@ For parallel (multithreaded) sweep, use `-m parallel` option.
 ```
 python3 simulate.py polarfly -q 5 -rf min -t uniform -m sequential -o pf.csv -k 3 -vc 4 -buf 32
 
+python3 simulate.py polarstar -d 8 -sg max -rf min -t uniform -m sequential -o ps.csv -k 3 -vc 4 -buf 32
+
 python3 simulate.py fattree -n 3 -rf nca -t uniform -m sequential -o dump.csv -k 2 -vc 4 -buf 32 
 
 python3 simulate.py dragonfly -n 1 -rf ugal -t uniform -m sequential -o dump.csv -k 2 -vc 3 -buf 43 
@@ -75,6 +78,7 @@ python3 simulate.py slimfly -q 3 -rf min -t uniform -m sequential -o dump.csv -k
 Following config files are present in `network_design/booksim/src/examples/`:
 
 - __polarflyconfig__ - for polarfly
+- __polarstarconfig__ - for polarstar
 - __slimflyconfig__ - for slimfly
 - __dragonflyconfig__ - for dragonfly
 - __fattreeconfig__ - for fattrees 

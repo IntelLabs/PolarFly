@@ -6,6 +6,7 @@
 import topogen as tg
 from topogen import validate_brown as vbr
 from topogen import validate_brown_ext as vbe
+from topogen import validate_polarstar as vps
 
 
 if __name__ == "__main__":
@@ -34,6 +35,13 @@ if __name__ == "__main__":
     parser_generate_brown_ext.set_defaults(func=tg.BrownExtGenerator().generate)
     topology_generator_parsers.append(parser_generate_brown_ext)
 
+    # Polarstar
+    parser_generate_polarstar = parser_generate_subparser.add_parser('polarstar', help='generate Polarstar topology')   
+    parser_generate_polarstar.add_argument('d', type=int, help='network radix, must be >= 2')
+    parser_generate_polarstar.add_argument('sg', type=str, choices=['iq', 'paley', 'max'], default="max", help='supernode graph : iq, paley or max')
+    parser_generate_polarstar.set_defaults(func=tg.PolarstarGenerator().generate)
+    topology_generator_parsers.append(parser_generate_polarstar) 
+
     for sub in topology_generator_parsers:
         sub.add_argument('-v','--validate', action='store_true', help='validates the generated topology')
         sub.set_defaults(save=True)
@@ -45,12 +53,16 @@ if __name__ == "__main__":
     parser_validate_subparser = parser_validate.add_subparsers(help='type of topology', dest='type', required=True)
 
     # Brown
-    parser_validate_slimfly = parser_validate_subparser.add_parser("brown", help='validates Brown topologies')
-    parser_validate_slimfly.set_defaults(func=vbr.validate_brown)
+    parser_validate_brown = parser_validate_subparser.add_parser("brown", help='validates Brown topologies')
+    parser_validate_brown.set_defaults(func=vbr.validate_brown)
 
     # Brown Extensions
-    parser_validate_slimfly = parser_validate_subparser.add_parser("brown_ext", help='validates expanded Brown topologies')
-    parser_validate_slimfly.set_defaults(func=vbe.validate_brown_ext)
+    parser_validate_brown_ext = parser_validate_subparser.add_parser("brown_ext", help='validates expanded Brown topologies')
+    parser_validate_brown_ext.set_defaults(func=vbe.validate_brown_ext)
+
+    # Polarstar
+    parser_validate_polarstar = parser_validate_subparser.add_parser("polarstar", help='validates polarstar topologies')
+    parser_validate_polarstar.set_defaults(func=vps.validate_polarstar)
 
     # end Topology Validator
 

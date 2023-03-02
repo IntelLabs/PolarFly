@@ -35,7 +35,6 @@ class Brown(Topology):
 
     Methods: 
         get_topo(): return the topoology in adjacency list
-        get_jellyfish_eq(): return jellyfish topology that uses same infrastructure
     """
 
     def __init__(self, q = -1, N = -1):
@@ -83,7 +82,3 @@ class Brown(Topology):
             self.__topo = BrownGenerator().make(self.q)
         return self.__topo
     
-    def get_jellyfish_eq(self):
-        jf = jellyfish(self.nr,self.r,self.p)
-        jf.name += "-" + self.name
-        return jf
