@@ -76,6 +76,7 @@ for sub in topology_parsers:
     sub.add_argument("-m", dest='mode', choices=["sequential", "parallel"], default="sequential", help="sequential or parallel (multithreaded) simulations")
     sub.add_argument('-o', dest='opfile', type=str, required=True, help='output csv file')
     sub.add_argument('-rr_perm', dest='rr_permute', choices=['yes', 'no'], type=str, help='<yes> to enable router to router permutation')
+    sub.add_argument('-s2', dest='use_size_power_of_two', choices=['yes', 'no'], type=str, help='<yes> to ensure number of nodes is a power of 2')
     sub.add_argument('-k', required=True, dest='k', type=int, help='num endpoints per router')
     sub.add_argument('-vc', dest='vc', type=int, help='num vcs')
     sub.add_argument('-buf', dest='buf', type=int, help='buffer size')    
@@ -145,6 +146,9 @@ def check_params(args):
     if (args.rr_permute == "yes"):
         assert((args.traffic!="goodpf") and (args.traffic!="badpf"))
         assert(args.topo!="fattree")
+
+    if (args.traffic == "bitcomp"):
+        args.use_size_power_of_two = "yes"
 
 
 
@@ -244,6 +248,8 @@ def create_cmd(inj_rate_, network_file, config_file, logfile, args):
         cmd = cmd + " traffic=" + args.traffic 
     if args.rr_permute is not None:
         cmd = cmd + " rr_permute=" + args.rr_permute
+    if args.use_size_power_of_two is not None:
+        cmd = cmd + " use_size_power_of_two=" + args.use_size_power_of_two
     cmd = cmd + " > " + logfile 
     return cmd
 
